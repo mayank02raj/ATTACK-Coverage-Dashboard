@@ -1,0 +1,18 @@
+title: Suspicious Scheduled Task in User Path
+id: cc3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7e
+status: stable
+description: Scheduled task creation pointing at user-writable paths
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\schtasks.exe'
+    CommandLine|contains:
+      - '/create'
+      - '\AppData\'
+  condition: selection
+level: high
+tags:
+  - attack.persistence
+  - attack.t1053.005

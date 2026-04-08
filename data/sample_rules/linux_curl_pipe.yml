@@ -1,1 +1,17 @@
-
+title: Curl or Wget Piped to Shell
+id: ee5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a
+status: stable
+description: Linux download-and-execute pattern via pipe to shell
+logsource:
+  product: linux
+  category: process_creation
+detection:
+  selection:
+    CommandLine|re: '(curl|wget)\s+[^\|]+\|\s*(sh|bash)'
+  condition: selection
+level: high
+tags:
+  - attack.command_and_control
+  - attack.t1105
+  - attack.execution
+  - attack.t1059.004

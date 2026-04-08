@@ -1,0 +1,21 @@
+title: PowerShell Encoded Command
+id: aa1a2b3c-4d5e-6f7a-8b9c-0d1e2f3a4b5c
+status: stable
+description: Detects encoded PowerShell commands often used by malware
+author: Mayank Raj
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\powershell.exe'
+    CommandLine|contains:
+      - ' -enc '
+      - ' -EncodedCommand '
+  condition: selection
+level: high
+tags:
+  - attack.execution
+  - attack.t1059.001
+  - attack.defense_evasion
+  - attack.t1027

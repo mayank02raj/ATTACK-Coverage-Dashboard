@@ -1,0 +1,18 @@
+title: SMB Lateral Movement via Admin Shares
+id: dd4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f
+status: stable
+description: Access to ADMIN$ or C$ shares from non-machine accounts
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 5140
+    ShareName|contains:
+      - 'ADMIN$'
+      - 'C$'
+  condition: selection
+level: medium
+tags:
+  - attack.lateral_movement
+  - attack.t1021.002
