@@ -1,1 +1,1 @@
-# ATT-CK-Coverage-Dashboard
+# ATT&CK-Coverage-Dashboard
